@@ -1,0 +1,17 @@
+config.log
+config.h
+config.mk
+config.sh
+*.o
+*.a
+*.so*
+*.mo
+*.exe
+
+cddetect
+cddetect_quick
+vercmp
+find_cat
+debdb2pupdb
+hotplug2stdout
+wbbox
