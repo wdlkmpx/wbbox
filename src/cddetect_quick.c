@@ -29,7 +29,7 @@ static void usage(const char *progname)
 
 int cddetect_quick_main(int argc, char **argv)
 {
-	int fd, status, optchar;
+	int fd, status;
 
 	for (int i = 1; i < argc; i++) {
 		if (strcmp(argv[i], "-d") == 0) {
