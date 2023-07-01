@@ -1,10 +1,19 @@
 include ../config.mk
 
-APP  = wbbox
-# ls *.c | sed "s%\.c%.o%g" | tr "\n" " " >> Makefile
-OBJS = cddetect.o cddetect_quick.o debdb2pupdb.o find_cat.o hotplug2stdout.o main.o vercmp.o 
+APP  = wbbox$(EXE)
 
-LINKS = cddetect cddetect_quick debdb2pupdb find_cat hotplug2stdout vercmp
+OBJS = find_cat.o main.o vercmp.o 
+LINKS = find_cat$(EXE) vercmp$(EXE)
+
+ifeq ($(TARGET_OS),Linux) 
+OBJS += debdb2pupdb.o cddetect.o cddetect_quick.o hotplug2stdout.o
+LINKS += debdb2pupdb$(EXE) cddetect$(EXE) cddetect_quick$(EXE) hotplug2stdout$(EXE)
+endif
+
+SLINK_CMD = ln -sv
+ifdef EXE
+SLINK_CMD = cp -afv
+endif
 
 #CPPFLAGS += -I..
 CFLAGS += -I..
@@ -15,7 +24,7 @@ all: $(APP)
 $(APP): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(APP) $(LDFLAGS) $(LIBS)
 	@for i in $(LINKS) ; do \
-		[ ! -e $${i} ] && ln -sv wbbox $${i} || true; \
+		[ ! -e $${i} ] && $(SLINK_CMD) $(APP) $${i} || true; \
 	done
 
 strip: $(APP)

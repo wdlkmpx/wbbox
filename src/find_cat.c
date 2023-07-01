@@ -13,11 +13,27 @@
  *
  * location: w-arch/<arch>/build/support/find_cat
  */
+ 
+#define _GNU_SOURCE
 
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
+
+#ifdef _WIN32
+static char * strndup(const char * src, size_t size)
+{
+	size_t len = strlen(src);
+	len = len < size ? len : size;
+	char * dst = malloc(len + 1);
+	if (!dst)
+		return NULL;
+	memcpy(dst, src, len);
+	dst[len] = '\0';
+	return dst;
+}
+#endif
 
 #define BUF_SIZE (32 * 1024)
 #define MAX_PKGS (60000)
