@@ -8,7 +8,6 @@ int cddetect_quick_main (int argc, char **argv);
 int hotplug2stdout_main(int argc, char **argv);
 int debdb2pupdb_main (int argc, char **argv);
 #endif
-int find_cat_main (int argc, char **argv);
 int vercmp_main (int argc, char **argv);
 
 #endif

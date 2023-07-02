@@ -2,8 +2,8 @@ include ../config.mk
 
 APP  = wbbox$(EXE)
 
-OBJS = find_cat.o main.o vercmp.o 
-LINKS = find_cat$(EXE) vercmp$(EXE)
+OBJS = main.o vercmp.o 
+LINKS = vercmp$(EXE)
 
 ifeq ($(TARGET_OS),Linux) 
 OBJS += debdb2pupdb.o cddetect.o cddetect_quick.o hotplug2stdout.o

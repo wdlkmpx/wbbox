@@ -26,7 +26,6 @@ struct wbbox_app apps[] =
 	{ "hotplug2stdout", hotplug2stdout_main },
 	{ "debdb2pupdb",    debdb2pupdb_main },
 #endif
-	{ "find_cat",       find_cat_main },
 	{ "vercmp",         vercmp_main },
 	{ NULL,             NULL },
 };
